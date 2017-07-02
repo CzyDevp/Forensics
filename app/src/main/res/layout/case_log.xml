@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffffff"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=" Log of each case with its status."
+        android:id="@+id/textView"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ff88857c" />
+
+    <TableLayout
+        android:layout_width="365dp"
+        android:layout_height="435dp"
+        android:showDividers="beginning|middle"
+        android:clickable="false"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:baselineAligned="false"
+        android:background="@drawable/abc_cab_background_bottom_holo_light">
+        <TableRow android:paddingTop="10dp" android:paddingLeft="15dp" android:paddingRight="5dp">
+            <TextView android:text="Case Id" android:layout_width="fill_parent" android:layout_weight="1" android:textSize="20dp"></TextView>
+            <TextView android:text="Modification" android:layout_width="fill_parent" android:layout_weight="1" android:textSize="20dp"></TextView>
+            <TextView android:text="Status" android:layout_width="fill_parent" android:layout_weight="1" android:textSize="20dp"></TextView>
+            <TextView ></TextView>
+        </TableRow>
+        </TableLayout>
+</LinearLayout>

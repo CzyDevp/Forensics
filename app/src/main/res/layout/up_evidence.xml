@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#ffffffff"
+    android:id="@+id/l1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="30"
+        android:id="@+id/textView"
+        android:text="  Update Evidence"
+        android:gravity="start"
+        android:background="#ff4bbce7"
+        android:textColor="#ffffffff"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:typeface="serif" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="100dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Case Id"
+            android:id="@+id/textView2"
+            android:layout_marginTop="-10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:textColor="#ff4bbce7" />
+        <AutoCompleteTextView
+            android:id="@+id/auto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginLeft="-0dp"
+            android:hint="       Select Case "
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="0dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Evedence Id"
+            android:id="@+id/textView23"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:textColor="#ff4bbce7" />
+
+        <AutoCompleteTextView
+            android:id="@+id/auto1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="-0dp"
+            android:hint="       Select Case "
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.09">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Additional Info"
+            android:id="@+id/ed1"
+            android:layout_weight="0.22"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="#ff4bbce7"
+            android:textSize="20sp"
+            android:editable="true"
+            android:enabled="true"
+            android:inputType="text"
+            android:textColorHint="#ff4bbce7"
+            android:background="#ffffffff" />
+    </LinearLayout>
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:id="@+id/cam"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/cam"
+        android:textAlignment="center"
+        android:singleLine="true"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="100dp"
+        android:enabled="false"
+        android:clickable="true"
+        />
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:id="@+id/video"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginRight="190dp"
+        android:background="@drawable/video"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:enabled="false"/>
+    <Button
+        android:layout_width="256dp"
+        android:layout_height="37dp"
+        android:text="Update"
+        android:id="@+id/update"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="150dp"
+        android:layout_marginRight="140dp"
+        android:textColor="#ff4bbce7"
+        android:textColorLink="#ff464646"
+        android:background="@android:drawable/editbox_background_normal"
+        android:textSize="18dp"
+        android:layout_marginTop="80dp"
+
+        android:clickable="true"
+        android:enabled="true" />
+</LinearLayout>
+</ScrollView>

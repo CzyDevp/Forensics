@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:baselineAligned="false"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:background="@android:drawable/editbox_background_normal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="    Select The Evidence Type"
+        android:id="@+id/textView2"
+        android:textColor="#c7ffffff"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_marginTop="120dp"
+        android:prompt="@drawable/abc_ab_solid_dark_holo"
+        android:popupBackground="@drawable/abc_ab_bottom_solid_dark_holo"
+        android:background="@drawable/abc_ab_bottom_solid_light_holo"
+        android:layout_marginStart="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <Button
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:text="Go.."
+        android:id="@+id/button"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_weight="0.05"
+        android:textSize="25dp"
+        android:typeface="serif" />
+</LinearLayout>

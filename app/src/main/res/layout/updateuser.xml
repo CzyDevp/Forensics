@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:layout_marginTop="0dp"
+    android:background="#ffffffff">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="30"
+        android:id="@+id/textView2"
+        android:text="  Update Info"
+        android:gravity="start"
+        android:background="#ff3fb8e5"
+        android:textColor="#ffffffff"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:typeface="serif"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_weight="0.35">
+      
+        <AutoCompleteTextView
+            android:id="@+id/auto1"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="60dp"
+            android:hint="   Search by Name Or Id"
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:maxLines="1"
+            android:textColorHint="#ff4bbce7"
+            android:singleLine="true"
+            android:layout_marginTop="-35dp"
+            android:typeface="serif"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="100dp"
+            android:autoText="false"
+            android:background="@android:drawable/ic_menu_search" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Current Name"
+            android:enabled="false"
+            android:textColorHint="#ff3fb8e5"
+            android:editable="true"
+            android:maxLines="1"
+            android:minLines="1"
+            android:lines="1"
+          />
+
+            <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/et3"
+                android:enabled="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="40dp"
+            android:hint="Current Contact"
+                android:textColorHint="#ff3fb8e5"
+            android:editable="true"
+
+                android:inputType="phone"
+                android:maxLength="10"
+                android:minLines="1"
+                android:maxLines="1"
+                android:lines="1" />
+        <Button
+            android:layout_width="34dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="305dp"
+            android:background="@drawable/cont"
+            android:layout_marginTop="-35dp"
+            android:id="@+id/con"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et4"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Current Email"
+            android:enabled="false"
+            android:textColorHint="#ff3fb8e5"
+            android:editable="true"
+            android:maxLines="1"
+            android:minLines="1"
+            android:lines="1" />
+
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:id="@+id/btn_modify"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColor="#ff3fb8e5"
+            android:enabled="false"
+            />
+    </LinearLayout>
+</LinearLayout>
+    </ScrollView>

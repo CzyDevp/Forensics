@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#ffffffff">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="30"
+        android:id="@+id/textView"
+        android:text="  Delete Case"
+        android:gravity="start"
+        android:background="#ff4bbce7"
+        android:textColor="#ffffffff"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:typeface="serif" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="80dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Case"
+            android:id="@+id/textView2"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:textColor="#ff4bbce7" />
+
+        <AutoCompleteTextView
+            android:id="@+id/auto1"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="-20dp"
+            android:hint="   Search by Name Or Id"
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+        <TextView
+            android:id="@+id/tv111"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:maxLines="1"
+            android:textColorHint="#ff4bbce7"
+            android:singleLine="true"
+            android:layout_marginTop="0dp"
+            android:typeface="serif"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="-40dp"
+            android:autoText="false"
+            android:background="@android:drawable/ic_menu_search" />
+                </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/tv1"
+        android:layout_weight="0.22"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ff4bbce7"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Case Id"
+        android:id="@+id/tv2"
+        android:layout_weight="0.22"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ff4bbce7"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:id="@+id/tv3"
+        android:layout_weight="0.22"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ff4bbce7"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:id="@+id/tv01"
+        android:layout_weight="0.22"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ff4bbce7"
+        android:textSize="20dp" />
+
+
+
+    <Button
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/del"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="130dp"
+        android:layout_marginRight="130dp"
+        android:textColor="#ff4bbce7"
+        android:textColorLink="#ff464646"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:textSize="18dp"></Button>
+    <TextView
+        android:id="@+id/tv145"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:maxLines="1"
+        android:textColorHint="#ff4bbce7"
+        android:singleLine="true"
+        android:layout_marginTop="-40dp"
+        android:typeface="serif"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="60dp"
+        android:autoText="false"
+        android:background="@android:drawable/ic_menu_delete" />
+        />
+</LinearLayout>
+</ScrollView>

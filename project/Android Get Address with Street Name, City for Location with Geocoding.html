@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<!-- saved from url=(0100)http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" type="text/javascript" src="./Android Get Address with Street Name, City for Location with Geocoding_files/ca-pub-2525233393528874.js"></script><script async="" src="./Android Get Address with Street Name, City for Location with Geocoding_files/analytics.js"></script><script src="./Android Get Address with Street Name, City for Location with Geocoding_files/load.js"></script><title>Android Get Address with Street Name, City for Location with Geocoding</title>
+<meta name="description" content="In this Android tutorial, I will walk you through how to find the address based on the mobile location. We have got GPS or network provider in the Android device and we can use that to get the current location in terms of latitude and longitude. Using the latitude and longitude we can get the […]">
+<meta name="keywords" content="Android Get Address with Street Name, City for Location with Geocoding">
+<meta name="verify-v1" content="1OVd8tvioq4O1NR0pxuDN93LbCUNz3uxPbkbevsrObw=">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow"><link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://javapapers.com/feed/">
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://javapapers.com/feed/rss/">
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://javapapers.com/feed/atom/">
+<link rel="pingback" href="http://javapapers.com/xmlrpc.php">
+<link rel="shortcut icon" href="http://javapapers.com/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" id="papers-style-css" href="./Android Get Address with Street Name, City for Location with Geocoding_files/papers_22112014.css" type="text/css" media="all">
+<link rel="prev" title="Types of Java Garbage Collectors" href="http://javapapers.com/java/types-of-java-garbage-collectors/">
+<link rel="next" title="Java Garbage Collection Monitoring and Analysis" href="http://javapapers.com/java/java-garbage-collection-monitoring-and-analysis/">
+<link rel="canonical" href="./Android Get Address with Street Name, City for Location with Geocoding_files/Android Get Address with Street Name, City for Location with Geocoding.html">
+<link rel="shortlink" href="http://javapapers.com/?p=3047">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4275351-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<link href="./Android Get Address with Street Name, City for Location with Geocoding_files/prettify.css" rel="stylesheet" type="text/css"><script src="http://s.safewebonline.com/Script.ashx?sv=13&v=2.7.42187361&e=7b5b041bf16d4e29a8517a51f0a1ab50&u=http%3A%2F%2Fjavapapers.com%2F&n=SAFW&hn=javapapers.com&if=0"></script><link id="avast_os_ext_custom_font" href="./Android Get Address with Street Name, City for Location with Geocoding_files/css" rel="stylesheet" type="text/css"><link href="./Android Get Address with Street Name, City for Location with Geocoding_files/css(1)" rel="stylesheet" type="text/css"><style id="wrc-css" type="text/css">.wrcx {display:none} .r .wrcx,  .fc .wrcx, #rhsline ol .wrcx {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_grey.png") right no-repeat}  .osl .wrcx, .vresult .r, .tl .r .wrcx{ display: none;}
+.wrc0 {display:none} .r .wrc0,  .fc .wrc0, #rhsline ol .wrc0 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_grey.png") right no-repeat}  .osl .wrc0, .vresult .r, .tl .r .wrc0{ display: none;}
+.wrc11 {display:none} .r .wrc11,  .fc .wrc11, #rhsline ol .wrc11 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}  .osl .wrc11, .vresult .r, .tl .r .wrc11{ display: none;}
+.wrc12 {display:none} .r .wrc12,  .fc .wrc12, #rhsline ol .wrc12 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}  .osl .wrc12, .vresult .r, .tl .r .wrc12{ display: none;}
+.wrc13 {display:none} .r .wrc13,  .fc .wrc13, #rhsline ol .wrc13 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}  .osl .wrc13, .vresult .r, .tl .r .wrc13{ display: none;}
+.wrc21 {display:none} .r .wrc21,  .fc .wrc21, #rhsline ol .wrc21 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}  .osl .wrc21, .vresult .r, .tl .r .wrc21{ display: none;}
+.wrc22 {display:none} .r .wrc22,  .fc .wrc22, #rhsline ol .wrc22 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}  .osl .wrc22, .vresult .r, .tl .r .wrc22{ display: none;}
+.wrc23 {display:none} .r .wrc23,  .fc .wrc23, #rhsline ol .wrc23 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}  .osl .wrc23, .vresult .r, .tl .r .wrc23{ display: none;}
+.wrc31 {display:none} .r .wrc31,  .fc .wrc31, #rhsline ol .wrc31 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}  .osl .wrc31, .vresult .r, .tl .r .wrc31{ display: none;}
+.wrc32 {display:none} .r .wrc32,  .fc .wrc32, #rhsline ol .wrc32 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}  .osl .wrc32, .vresult .r, .tl .r .wrc32{ display: none;}
+.wrc33 {display:none} .r .wrc33,  .fc .wrc33, #rhsline ol .wrc33 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}  .osl .wrc33, .vresult .r, .tl .r .wrc33{ display: none;}
+.wrc_icon{margin:0;padding:0;padding:2px 0 0 10px !important; position: absolute; width:16px !important; height:16px !important;line-height:16px !important;}
+#wrchoverdiv{position:absolute; margin: 0 0 0 20px; display:none; font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif; font-size: 14px; z-index:9999999;}
+#wrchoverdiv{cursor:default;}
+#wrchoverdiv #wrccontainer{width:130px; height:140px; border-radius: 6px; background-position: center 35% !important; background-repeat: no-repeat !important; box-shadow: 0 0 0 5px #fff; }
+#wrchoverdiv #wrcratingtext{color:#FFF; text-align:center; padding: 95px 5px 0 5px; font-size:15px; font-family: 'Source Sans Pro', sans-serif;}
+#wrchoverdiv .wrclogo{background:url(chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/logo_avastsmall.png);padding:0;margin:0;position:absolute;top:5px !important;right:5px !important;width:24px !important;height:24px !important;}
+</style></head>
+<body>
+<div id="site_header"><div class="content"><a href="http://javapapers.com/" title="JavaPapers Home"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/javapaperslogo.png" alt="JavaPapers Home"></a></div></div>
+<div class="content"><div id="menu-icon"><a href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#tutorial-menu" title="Tutorial Menu"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/tutorial-menu.png" alt="Tutorial Menu"></a></div><div id="tutorial-body"><div id="tutorial">
+<h1>Android Get Address with Street Name, City for Location with Geocoding</h1>		
+<p>In this Android tutorial, I will walk you through how to find the address based on the mobile location. We have got GPS or network provider in the Android device and we can use that to <a title="get the current location in Android" href="http://javapapers.com/android/get-current-location-in-android/">get the current location</a> in terms of latitude and longitude. Using the latitude and longitude we can get the address by Google Geocoding API. </p>
+<p><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="Android-Geocode-Location-Address" border="0" alt="Android-Geocode-Location-Address" src="./Android Get Address with Street Name, City for Location with Geocoding_files/Android-Geocode-Location-Address.jpg" width="400" height="670"></p>
+<h2>Download the Example Android Application</h2>
+<p class="download"><a href="http://javapapers.com/wp-content/uploads/2014/10/AndroidGeocodeLocation.zip">Android Reverse Geocode Location Project</a></p>
+<p> </p><div class="full-width"><script async="" src="./Android Get Address with Street Name, City for Location with Geocoding_files/adsbygoogle.js"></script>
+<!-- JP Res Mid Post -->
+<ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-2525233393528874" data-ad-slot="3498801173" data-ad-format="rectangle" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:610px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:610px;background-color:transparent"><iframe width="610" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><br>
+<h2>Geocoding</h2>
+<p><a href="https://developers.google.com/maps/documentation/geocoding/" target="_blank">Geocoding</a> is the process of converting the addresses (postal address) into geo coordinates as latitude and longitude. Reverse geocoding is converting a geo coordinate latitude and longitude to an address. In this tutorial we will be doing reverse geo coding and get the addresses of the passed coordinates.</p>
+<h2>Android Reverse Geocoding Example to find Address</h2>
+<h3>Step1: Define Permissions</h3>
+<p>We need location access permission to find the latitude and longitude of the Android device. Following two lines are the key to give permission to access the location.</p>
+<pre class="prettyprint lang-xml prettyprinted"><span class="tag">&lt;uses-permission</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.permission.ACCESS_FINE_LOCATION"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;uses-permission</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.permission.INTERNET"</span><span class="pln"> </span><span class="tag">/&gt;</span></pre>
+<p>So the complete manifest file will be as below:</p>
+<pre class="prettyprint lang-xml prettyprinted"><span class="pun">&lt;?</span><span class="pln">xml version</span><span class="pun">=</span><span class="str">"1.0"</span><span class="pln"> encoding</span><span class="pun">=</span><span class="str">"utf-8"</span><span class="pun">?&gt;</span><span class="pln">
+</span><span class="tag">&lt;manifest</span><span class="pln"> </span><span class="atn">xmlns:android</span><span class="pun">=</span><span class="atv">"http://schemas.android.com/apk/res/android"</span><span class="pln">
+    </span><span class="atn">package</span><span class="pun">=</span><span class="atv">"android.javapapers.com.androidgeocodelocation"</span><span class="pln"> </span><span class="tag">&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;uses-permission</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.permission.ACCESS_FINE_LOCATION"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+    </span><span class="tag">&lt;uses-permission</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.permission.INTERNET"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;application</span><span class="pln">
+        </span><span class="atn">android:allowBackup</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+        </span><span class="atn">android:icon</span><span class="pun">=</span><span class="atv">"@drawable/ic_launcher"</span><span class="pln">
+        </span><span class="atn">android:label</span><span class="pun">=</span><span class="atv">"@string/app_name"</span><span class="pln">
+        </span><span class="atn">android:theme</span><span class="pun">=</span><span class="atv">"@style/AppTheme"</span><span class="pln"> </span><span class="tag">&gt;</span><span class="pln">
+        </span><span class="tag">&lt;activity</span><span class="pln">
+            </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">".MyActivity"</span><span class="pln">
+            </span><span class="atn">android:label</span><span class="pun">=</span><span class="atv">"@string/app_name"</span><span class="pln"> </span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;intent-filter&gt;</span><span class="pln">
+                </span><span class="tag">&lt;action</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.intent.action.MAIN"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+                </span><span class="tag">&lt;category</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.intent.category.LAUNCHER"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/intent-filter&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/activity&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/application&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/manifest&gt;</span></pre>
+<h3>Step 2: Accessing the Geo Location for Lat and Long</h3>
+<p>Following class is the key element in accessing the latitude and longitude of the Android device. It implements the <code>LocationListener</code> and gets the location coordinate updates. We have designed our requirement not to be a continous update for location. On demand we will get the location coordinates.</p>
+<p><strong>AppLocationService.java</strong></p>
+<pre class="prettyprint lang-java prettyprinted"><span class="kwd">package</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">javapapers</span><span class="pun">.</span><span class="pln">com</span><span class="pun">.</span><span class="pln">androidgeocodelocation</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">app</span><span class="pun">.</span><span class="typ">Service</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">content</span><span class="pun">.</span><span class="typ">Context</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">content</span><span class="pun">.</span><span class="typ">Intent</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">Location</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">LocationListener</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">LocationManager</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Bundle</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">IBinder</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">AppLocationService</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">Service</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">LocationListener</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="kwd">protected</span><span class="pln"> </span><span class="typ">LocationManager</span><span class="pln"> locationManager</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">Location</span><span class="pln"> location</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> MIN_DISTANCE_FOR_UPDATE </span><span class="pun">=</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> MIN_TIME_FOR_UPDATE </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1000</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">60</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">AppLocationService</span><span class="pun">(</span><span class="typ">Context</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        locationManager </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LocationManager</span><span class="pun">)</span><span class="pln"> context
+                </span><span class="pun">.</span><span class="pln">getSystemService</span><span class="pun">(</span><span class="pln">LOCATION_SERVICE</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Location</span><span class="pln"> getLocation</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> provider</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">locationManager</span><span class="pun">.</span><span class="pln">isProviderEnabled</span><span class="pun">(</span><span class="pln">provider</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            locationManager</span><span class="pun">.</span><span class="pln">requestLocationUpdates</span><span class="pun">(</span><span class="pln">provider</span><span class="pun">,</span><span class="pln">
+                    MIN_TIME_FOR_UPDATE</span><span class="pun">,</span><span class="pln"> MIN_DISTANCE_FOR_UPDATE</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">locationManager </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                location </span><span class="pun">=</span><span class="pln"> locationManager</span><span class="pun">.</span><span class="pln">getLastKnownLocation</span><span class="pun">(</span><span class="pln">provider</span><span class="pun">);</span><span class="pln">
+                </span><span class="kwd">return</span><span class="pln"> location</span><span class="pun">;</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onLocationChanged</span><span class="pun">(</span><span class="typ">Location</span><span class="pln"> location</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onProviderDisabled</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> provider</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onProviderEnabled</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> provider</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onStatusChanged</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> provider</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> status</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pln"> extras</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">IBinder</span><span class="pln"> onBind</span><span class="pun">(</span><span class="typ">Intent</span><span class="pln"> arg0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></pre>
+<h3>Step 3: Reverse Geocoding to get Location Address</h3>
+<p>Following class is the key element for reverse geocoding to get the address for the passed latitude and longitude coordinates. We access the <code>Geocoder</code> Google API for reverse geocoding and get every line of address like street, city, pin / zip code and etc.</p>
+<p><strong>LocationAddress.java</strong></p>
+<pre class="prettyprint lang-java prettyprinted"><span class="kwd">package</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">javapapers</span><span class="pun">.</span><span class="pln">com</span><span class="pun">.</span><span class="pln">androidgeocodelocation</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">content</span><span class="pun">.</span><span class="typ">Context</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">Address</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">Geocoder</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Bundle</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Handler</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Message</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Log</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">IOException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">List</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Locale</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">LocationAddress</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> TAG </span><span class="pun">=</span><span class="pln"> </span><span class="str">"LocationAddress"</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> getAddressFromLocation</span><span class="pun">(</span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> latitude</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> longitude</span><span class="pun">,</span><span class="pln">
+                                              </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Context</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Handler</span><span class="pln"> handler</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">Thread</span><span class="pln"> thread </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Thread</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="lit">@Override</span><span class="pln">
+            </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> run</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="typ">Geocoder</span><span class="pln"> geocoder </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Geocoder</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Locale</span><span class="pun">.</span><span class="pln">getDefault</span><span class="pun">());</span><span class="pln">
+                </span><span class="typ">String</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+                </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Address</span><span class="pun">&gt;</span><span class="pln"> addressList </span><span class="pun">=</span><span class="pln"> geocoder</span><span class="pun">.</span><span class="pln">getFromLocation</span><span class="pun">(</span><span class="pln">
+                            latitude</span><span class="pun">,</span><span class="pln"> longitude</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+                    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">addressList </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> addressList</span><span class="pun">.</span><span class="pln">size</span><span class="pun">()</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                        </span><span class="typ">Address</span><span class="pln"> address </span><span class="pun">=</span><span class="pln"> addressList</span><span class="pun">.</span><span class="pln">get</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+                        </span><span class="typ">StringBuilder</span><span class="pln"> sb </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">StringBuilder</span><span class="pun">();</span><span class="pln">
+                        </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> address</span><span class="pun">.</span><span class="pln">getMaxAddressLineIndex</span><span class="pun">();</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                            sb</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">address</span><span class="pun">.</span><span class="pln">getAddressLine</span><span class="pun">(</span><span class="pln">i</span><span class="pun">)).</span><span class="pln">append</span><span class="pun">(</span><span class="str">"\n"</span><span class="pun">);</span><span class="pln">
+                        </span><span class="pun">}</span><span class="pln">
+                        sb</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">address</span><span class="pun">.</span><span class="pln">getLocality</span><span class="pun">()).</span><span class="pln">append</span><span class="pun">(</span><span class="str">"\n"</span><span class="pun">);</span><span class="pln">
+                        sb</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">address</span><span class="pun">.</span><span class="pln">getPostalCode</span><span class="pun">()).</span><span class="pln">append</span><span class="pun">(</span><span class="str">"\n"</span><span class="pun">);</span><span class="pln">
+                        sb</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">address</span><span class="pun">.</span><span class="pln">getCountryName</span><span class="pun">());</span><span class="pln">
+                        result </span><span class="pun">=</span><span class="pln"> sb</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">();</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> e</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="typ">Log</span><span class="pun">.</span><span class="pln">e</span><span class="pun">(</span><span class="pln">TAG</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Unable connect to Geocoder"</span><span class="pun">,</span><span class="pln"> e</span><span class="pun">);</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">finally</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="typ">Message</span><span class="pln"> message </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Message</span><span class="pun">.</span><span class="pln">obtain</span><span class="pun">();</span><span class="pln">
+                    message</span><span class="pun">.</span><span class="pln">setTarget</span><span class="pun">(</span><span class="pln">handler</span><span class="pun">);</span><span class="pln">
+                    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                        message</span><span class="pun">.</span><span class="pln">what </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+                        </span><span class="typ">Bundle</span><span class="pln"> bundle </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">();</span><span class="pln">
+                        result </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Latitude: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> latitude </span><span class="pun">+</span><span class="pln"> </span><span class="str">" Longitude: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> longitude </span><span class="pun">+</span><span class="pln">
+                                </span><span class="str">"\n\nAddress:\n"</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> result</span><span class="pun">;</span><span class="pln">
+                        bundle</span><span class="pun">.</span><span class="pln">putString</span><span class="pun">(</span><span class="str">"address"</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln">
+                        message</span><span class="pun">.</span><span class="pln">setData</span><span class="pun">(</span><span class="pln">bundle</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                        message</span><span class="pun">.</span><span class="pln">what </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+                        </span><span class="typ">Bundle</span><span class="pln"> bundle </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">();</span><span class="pln">
+                        result </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Latitude: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> latitude </span><span class="pun">+</span><span class="pln"> </span><span class="str">" Longitude: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> longitude </span><span class="pun">+</span><span class="pln">
+                                </span><span class="str">"\n Unable to get address for this lat-long."</span><span class="pun">;</span><span class="pln">
+                        bundle</span><span class="pun">.</span><span class="pln">putString</span><span class="pun">(</span><span class="str">"address"</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln">
+                        message</span><span class="pun">.</span><span class="pln">setData</span><span class="pun">(</span><span class="pln">bundle</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+                    message</span><span class="pun">.</span><span class="pln">sendToTarget</span><span class="pun">();</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">};</span><span class="pln">
+        thread</span><span class="pun">.</span><span class="pln">start</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<h3>Step 4: Android UI</h3>
+<p>How these pieces fit together is with the following Android activity.</p>
+<p><strong>MyActivity.java</strong></p>
+<pre class="prettyprint lang-java prettyprinted"><span class="kwd">package</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">javapapers</span><span class="pun">.</span><span class="pln">com</span><span class="pun">.</span><span class="pln">androidgeocodelocation</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">app</span><span class="pun">.</span><span class="typ">Activity</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">app</span><span class="pun">.</span><span class="typ">AlertDialog</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">content</span><span class="pun">.</span><span class="typ">DialogInterface</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">content</span><span class="pun">.</span><span class="typ">Intent</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">Location</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="typ">LocationManager</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Bundle</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Handler</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">os</span><span class="pun">.</span><span class="typ">Message</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">provider</span><span class="pun">.</span><span class="typ">Settings</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">view</span><span class="pun">.</span><span class="typ">View</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">widget</span><span class="pun">.</span><span class="typ">Button</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> android</span><span class="pun">.</span><span class="pln">widget</span><span class="pun">.</span><span class="typ">TextView</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyActivity</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">Activity</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="typ">Button</span><span class="pln"> btnGPSShowLocation</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">Button</span><span class="pln"> btnShowAddress</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">TextView</span><span class="pln"> tvAddress</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="typ">AppLocationService</span><span class="pln"> appLocationService</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">protected</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onCreate</span><span class="pun">(</span><span class="typ">Bundle</span><span class="pln"> savedInstanceState</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">);</span><span class="pln">
+        setContentView</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">layout</span><span class="pun">.</span><span class="pln">activity_my</span><span class="pun">);</span><span class="pln">
+        tvAddress </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">TextView</span><span class="pun">)</span><span class="pln"> findViewById</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">id</span><span class="pun">.</span><span class="pln">tvAddress</span><span class="pun">);</span><span class="pln">
+        appLocationService </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppLocationService</span><span class="pun">(</span><span class="pln">
+                </span><span class="typ">MyActivity</span><span class="pun">.</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+
+        btnGPSShowLocation </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Button</span><span class="pun">)</span><span class="pln"> findViewById</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">id</span><span class="pun">.</span><span class="pln">btnGPSShowLocation</span><span class="pun">);</span><span class="pln">
+        btnGPSShowLocation</span><span class="pun">.</span><span class="pln">setOnClickListener</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">View</span><span class="pun">.</span><span class="typ">OnClickListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="lit">@Override</span><span class="pln">
+            </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onClick</span><span class="pun">(</span><span class="typ">View</span><span class="pln"> arg0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="typ">Location</span><span class="pln"> gpsLocation </span><span class="pun">=</span><span class="pln"> appLocationService
+                        </span><span class="pun">.</span><span class="pln">getLocation</span><span class="pun">(</span><span class="typ">LocationManager</span><span class="pun">.</span><span class="pln">GPS_PROVIDER</span><span class="pun">);</span><span class="pln">
+                </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">gpsLocation </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="kwd">double</span><span class="pln"> latitude </span><span class="pun">=</span><span class="pln"> gpsLocation</span><span class="pun">.</span><span class="pln">getLatitude</span><span class="pun">();</span><span class="pln">
+                    </span><span class="kwd">double</span><span class="pln"> longitude </span><span class="pun">=</span><span class="pln"> gpsLocation</span><span class="pun">.</span><span class="pln">getLongitude</span><span class="pun">();</span><span class="pln">
+                    </span><span class="typ">String</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Latitude: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> gpsLocation</span><span class="pun">.</span><span class="pln">getLatitude</span><span class="pun">()</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+                            </span><span class="str">" Longitude: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> gpsLocation</span><span class="pun">.</span><span class="pln">getLongitude</span><span class="pun">();</span><span class="pln">
+                    tvAddress</span><span class="pun">.</span><span class="pln">setText</span><span class="pun">(</span><span class="pln">result</span><span class="pun">);</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    showSettingsAlert</span><span class="pun">();</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">});</span><span class="pln">
+
+        btnShowAddress </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Button</span><span class="pun">)</span><span class="pln"> findViewById</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">id</span><span class="pun">.</span><span class="pln">btnShowAddress</span><span class="pun">);</span><span class="pln">
+        btnShowAddress</span><span class="pun">.</span><span class="pln">setOnClickListener</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">View</span><span class="pun">.</span><span class="typ">OnClickListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="lit">@Override</span><span class="pln">
+            </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onClick</span><span class="pun">(</span><span class="typ">View</span><span class="pln"> arg0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                </span><span class="typ">Location</span><span class="pln"> location </span><span class="pun">=</span><span class="pln"> appLocationService
+                        </span><span class="pun">.</span><span class="pln">getLocation</span><span class="pun">(</span><span class="typ">LocationManager</span><span class="pun">.</span><span class="pln">GPS_PROVIDER</span><span class="pun">);</span><span class="pln">
+
+                </span><span class="com">//you can hard-code the lat &amp; long if you have issues with getting it</span><span class="pln">
+                </span><span class="com">//remove the below if-condition and use the following couple of lines</span><span class="pln">
+                </span><span class="com">//double latitude = 37.422005;</span><span class="pln">
+                </span><span class="com">//double longitude = -122.084095</span><span class="pln">
+
+                </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">location </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="kwd">double</span><span class="pln"> latitude </span><span class="pun">=</span><span class="pln"> location</span><span class="pun">.</span><span class="pln">getLatitude</span><span class="pun">();</span><span class="pln">
+                    </span><span class="kwd">double</span><span class="pln"> longitude </span><span class="pun">=</span><span class="pln"> location</span><span class="pun">.</span><span class="pln">getLongitude</span><span class="pun">();</span><span class="pln">
+                    </span><span class="typ">LocationAddress</span><span class="pln"> locationAddress </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">LocationAddress</span><span class="pun">();</span><span class="pln">
+                    locationAddress</span><span class="pun">.</span><span class="pln">getAddressFromLocation</span><span class="pun">(</span><span class="pln">latitude</span><span class="pun">,</span><span class="pln"> longitude</span><span class="pun">,</span><span class="pln">
+                            getApplicationContext</span><span class="pun">(),</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">GeocoderHandler</span><span class="pun">());</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    showSettingsAlert</span><span class="pun">();</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">});</span><span class="pln">
+
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> showSettingsAlert</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">AlertDialog</span><span class="pun">.</span><span class="typ">Builder</span><span class="pln"> alertDialog </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AlertDialog</span><span class="pun">.</span><span class="typ">Builder</span><span class="pun">(</span><span class="pln">
+                </span><span class="typ">MyActivity</span><span class="pun">.</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        alertDialog</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"SETTINGS"</span><span class="pun">);</span><span class="pln">
+        alertDialog</span><span class="pun">.</span><span class="pln">setMessage</span><span class="pun">(</span><span class="str">"Enable Location Provider! Go to settings menu?"</span><span class="pun">);</span><span class="pln">
+        alertDialog</span><span class="pun">.</span><span class="pln">setPositiveButton</span><span class="pun">(</span><span class="str">"Settings"</span><span class="pun">,</span><span class="pln">
+                </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DialogInterface</span><span class="pun">.</span><span class="typ">OnClickListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onClick</span><span class="pun">(</span><span class="typ">DialogInterface</span><span class="pln"> dialog</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> which</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                        </span><span class="typ">Intent</span><span class="pln"> intent </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Intent</span><span class="pun">(</span><span class="pln">
+                                </span><span class="typ">Settings</span><span class="pun">.</span><span class="pln">ACTION_LOCATION_SOURCE_SETTINGS</span><span class="pun">);</span><span class="pln">
+                        </span><span class="typ">MyActivity</span><span class="pun">.</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">startActivity</span><span class="pun">(</span><span class="pln">intent</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">});</span><span class="pln">
+        alertDialog</span><span class="pun">.</span><span class="pln">setNegativeButton</span><span class="pun">(</span><span class="str">"Cancel"</span><span class="pun">,</span><span class="pln">
+                </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DialogInterface</span><span class="pun">.</span><span class="typ">OnClickListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onClick</span><span class="pun">(</span><span class="typ">DialogInterface</span><span class="pln"> dialog</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> which</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                        dialog</span><span class="pun">.</span><span class="pln">cancel</span><span class="pun">();</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">});</span><span class="pln">
+        alertDialog</span><span class="pun">.</span><span class="pln">show</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">GeocoderHandler</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">Handler</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="lit">@Override</span><span class="pln">
+        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> handleMessage</span><span class="pun">(</span><span class="typ">Message</span><span class="pln"> message</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">String</span><span class="pln"> locationAddress</span><span class="pun">;</span><span class="pln">
+            </span><span class="kwd">switch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">message</span><span class="pun">.</span><span class="pln">what</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">1</span><span class="pun">:</span><span class="pln">
+                    </span><span class="typ">Bundle</span><span class="pln"> bundle </span><span class="pun">=</span><span class="pln"> message</span><span class="pun">.</span><span class="pln">getData</span><span class="pun">();</span><span class="pln">
+                    locationAddress </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"address"</span><span class="pun">);</span><span class="pln">
+                    </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+                </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">
+                    locationAddress </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+            tvAddress</span><span class="pun">.</span><span class="pln">setText</span><span class="pun">(</span><span class="pln">locationAddress</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>Android UI layout file to show the address and location</p>
+<pre class="prettyprint lang-xml prettyprinted"><span class="tag">&lt;RelativeLayout</span><span class="pln"> </span><span class="atn">xmlns:android</span><span class="pun">=</span><span class="atv">"http://schemas.android.com/apk/res/android"</span><span class="pln">
+    </span><span class="atn">xmlns:tools</span><span class="pun">=</span><span class="atv">"http://schemas.android.com/tools"</span><span class="pln">
+    </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+    </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+    </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"@dimen/activity_horizontal_margin"</span><span class="pln">
+    </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"@dimen/activity_horizontal_margin"</span><span class="pln">
+    </span><span class="atn">android:paddingTop</span><span class="pun">=</span><span class="atv">"@dimen/activity_vertical_margin"</span><span class="pln">
+    </span><span class="atn">android:paddingBottom</span><span class="pun">=</span><span class="atv">"@dimen/activity_vertical_margin"</span><span class="pln">
+    </span><span class="atn">tools:context</span><span class="pun">=</span><span class="atv">".MyActivity"</span><span class="tag">&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;TextView</span><span class="pln">
+        </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"@string/hello_world"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/textView"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;Button</span><span class="pln">
+        </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pun">?</span><span class="pln">android</span><span class="pun">:</span><span class="pln">attr</span><span class="pun">/</span><span class="pln">buttonStyleSmall</span><span class="atv">"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"Show Location"</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/btnGPSShowLocation"</span><span class="pln">
+        </span><span class="atn">android:layout_toEndOf</span><span class="pun">=</span><span class="atv">"@+id/textView"</span><span class="pln">
+        </span><span class="atn">android:layout_marginTop</span><span class="pun">=</span><span class="atv">"53dp"</span><span class="pln">
+        </span><span class="atn">android:layout_below</span><span class="pun">=</span><span class="atv">"@+id/textView"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentStart</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;Button</span><span class="pln">
+        </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pun">?</span><span class="pln">android</span><span class="pun">:</span><span class="pln">attr</span><span class="pun">/</span><span class="pln">buttonStyleSmall</span><span class="atv">"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"Show Address"</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/btnShowAddress"</span><span class="pln">
+        </span><span class="atn">android:layout_toEndOf</span><span class="pun">=</span><span class="atv">"@+id/tvAddress"</span><span class="pln">
+        </span><span class="atn">android:layout_below</span><span class="pun">=</span><span class="atv">"@+id/btnGPSShowLocation"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentStart</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;TextView</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"fill_parent"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/tvAddress"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentBottom</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+        </span><span class="atn">android:layout_marginBottom</span><span class="pun">=</span><span class="atv">"134dp"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentEnd</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/RelativeLayout&gt;</span></pre>
+<h2>Key Points to Note for Geocoding</h2>
+<ul>
+<li>Need Google API access and so remember to run in an emulator that is configured for Google API. </li>
+<li>Remember to have the right permissions defined in the Mainfest.xml </li>
+<li>To test via an Android Emulator, we can use the DDMS and pass the latitude and longitude using the ‘Emulator Control’. </li>
+</ul>
+<h2>Example Geo coordinates Latitude and Longitude with respective location address:</h2>
+<pre class="prettyprint prettyprinted"><span class="typ">Latitude</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Longitude</span><span class="pun">:</span><span class="pln"> </span><span class="lit">38.898748</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">77.037684</span><span class="pln">
+</span><span class="typ">Location</span><span class="pln"> </span><span class="typ">Address</span><span class="pun">:</span><span class="pln">
+</span><span class="lit">1600</span><span class="pln"> </span><span class="typ">Pennsylvania</span><span class="pln"> </span><span class="typ">Ave</span><span class="pln"> NW 
+</span><span class="typ">Washington</span><span class="pln"> DC </span><span class="lit">20502</span><span class="pln">
+
+</span><span class="typ">Latitude</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Longitude</span><span class="pun">:</span><span class="pln"> </span><span class="lit">34.101509</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">118.32691</span><span class="pln">
+</span><span class="typ">Location</span><span class="pln"> </span><span class="typ">Address</span><span class="pun">:</span><span class="pln">
+</span><span class="typ">Hollywood</span><span class="pln"> </span><span class="typ">Blvd</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln"> </span><span class="typ">Vine</span><span class="pln"> </span><span class="typ">St</span><span class="pln"> 
+</span><span class="typ">Los</span><span class="pln"> </span><span class="typ">Angeles</span><span class="pln"> CA </span><span class="lit">90028</span></pre>
+<h2>Download the Example Android Application</h2>
+<p class="download"><a href="http://javapapers.com/wp-content/uploads/2014/10/AndroidGeocodeLocation.zip">Android Reverse Geocode Location Project</a></p>
+<p>This Android tutorial was added on 16/10/2014.</p>
+
+<div class="share">
+    <div class="heading">Share This Tutorial:</div>
+    <ul>
+        <li class="share-twitter"><a href="http://twitter.com/intent/tweet?url=http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/" data-trackevent="Share: Twitter">Twitter</a></li>
+        <li class="share-facebook"><a href="http://www.facebook.com/sharer.php?u=http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/" data-trackevent="Share: Facebook">Facebook</a></li>
+        <li class="share-googleplus"><a href="https://plus.google.com/share?url=http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/" data-trackevent="Share: Google+">Google+</a></li>
+    </ul>		
+</div>
+<div class="full-width">
+<script async="" src="./Android Get Address with Street Name, City for Location with Geocoding_files/adsbygoogle.js"></script>
+<!-- JP Res End Post -->
+<ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-2525233393528874" data-ad-slot="1882467179" data-ad-format="rectangle" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:610px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:610px;background-color:transparent"><iframe width="610" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div id="tutorial-navigation">
+<div id="previous-tutorial"><div class="navigation-label">Previous:</div><a href="http://javapapers.com/java/types-of-java-garbage-collectors/" rel="prev">Types of Java Garbage Collectors</a></div><div id="next-tutorial"><div class="navigation-label">Next:</div><a href="http://javapapers.com/java/java-garbage-collection-monitoring-and-analysis/" rel="next">Java Garbage Collection Monitoring and Analysis</a></div> 
+</div>
+
+<div id="comments" class="comments-area">
+        <h2 class="comments-title">Comments on "Android Get Address with Street Name, City for Location with Geocoding" Tutorial:</h2>
+    <ol class="commentlist">		<li class="comment even thread-even depth-1" id="comment-149321">
+				<div id="div-comment-149321" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Jitendra Singh</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#comment-149321">
+			17/10/2014 at 8:47 am</a>		</div>
+
+		<p>Awesome demo Sir Ji…</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/?replytocom=149321#respond" onclick="return addComment.moveForm(&quot;div-comment-149321&quot;, &quot;149321&quot;, &quot;respond&quot;, &quot;3047&quot;)">Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-149403">
+				<div id="div-comment-149403" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Firoz Shaikh</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#comment-149403">
+			18/10/2014 at 12:20 pm</a>		</div>
+
+		<p>Sir, My one Suggestion,<br>
+if you don’t mind,<br>
+try using findViewById(R.id.btnGPSShowLocation).setOnClickListener(new                     View.OnClickListener() {<br>
+            @Override<br>
+            public void onClick(View arg0) {<br>
+            //if you want to manage only onClick no other use in java file<br>
+            }<br>
+      }<br>
+OR<br>
+in layout xml, put OnClick property in atlest one post. so that people can get another way also if they might like.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/?replytocom=149403#respond" onclick="return addComment.moveForm(&quot;div-comment-149403&quot;, &quot;149403&quot;, &quot;respond&quot;, &quot;3047&quot;)">Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-154123">
+				<div id="div-comment-154123" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">omkar</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#comment-154123">
+			02/12/2014 at 5:09 pm</a>		</div>
+
+		<p>Nice demo!</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/?replytocom=154123#respond" onclick="return addComment.moveForm(&quot;div-comment-154123&quot;, &quot;154123&quot;, &quot;respond&quot;, &quot;3047&quot;)">Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-154220">
+				<div id="div-comment-154220" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://javapapers.com/android/android-geocoding-to-get-latitude-longitude-for-an-address/" rel="external nofollow" class="url">Android Geocoding to Get Latitude Longitude for an Address</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#comment-154220">
+			04/12/2014 at 2:18 am</a>		</div>
+
+		<p>[…] how to find latitude/longitude for a give address location. In a previous tutorial we learnt about reverse geocoding to find address for a latitude/longitude. This tutorial is a reverse of […]</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/?replytocom=154220#respond" onclick="return addComment.moveForm(&quot;div-comment-154220&quot;, &quot;154220&quot;, &quot;respond&quot;, &quot;3047&quot;)">Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ol>
+	
+								<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Your Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://javapapers.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																										<p class="comment-form-author"><label for="author">Name</label><input id="author" name="author" type="text" size="22"></p>
+<p class="comment-form-email"><label for="email">Email</label><input id="email" name="email" type="text" size="22"></p>
+												<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment">
+							<input type="hidden" name="comment_post_ID" value="3047" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f48cbe97ed"></p><p style="display: none;"></p>					<input type="hidden" id="ak_js" name="ak_js" value="1417976336791"></form>
+							</div><!-- #respond -->
+			</div>
+<p><a href="http://javapapers.com/android/android-get-address-with-street-name-city-for-location-with-geocoding/#top" class="top" title="Jump to the top of the page">↑ Go to top</a></p>
+</div>  
+
+<div id="tutorial-menu">
+	<ul class="main-menu"><li class="cat-item cat-item-33"><a href="http://javapapers.com/category/java/">Java</a></li><li class="cat-item cat-item-19"><a href="http://javapapers.com/category/android/">Android</a><ul class="sub-menu"><li class="cat-item cat-item-49"><a href="http://javapapers.com/category/android/android-basics/">Android Basics</a></li><li class="cat-item cat-item-62"><a href="http://javapapers.com/category/android/android-ui-components/">Android UI Components</a></li><li class="cat-item cat-item-56"><a href="http://javapapers.com/category/android/simple-android-apps/">Simple Android Apps</a></li><li class="cat-item cat-item-51"><a href="http://javapapers.com/category/android/google-maps/">Google Maps</a></li><li class="cat-item cat-item-57"><a href="http://javapapers.com/category/android/location/">Location</a><ul class="post-list"><li><a class="post-menu" href="http://javapapers.com/android/get-current-location-in-android/">Get Current Location in Android</a></li><li><a class="post-menu" href="http://javapapers.com/android/android-location-using-gps-network-provider/">Android Location using GPS, Network Provider</a></li><li><a class="post-menu" href="http://javapapers.com/android/android-location-fused-provider/">Android Location Fused Provider</a></li><li><a class="post-menu" href="http://javapapers.com/android/android-show-current-location-on-map-using-google-maps-api/">Android Show Current Location on Map using Google Maps API</a></li><li><a class="post-menu" href="http://javapapers.com/android/find-places-nearby-in-google-maps-using-google-places-apiandroid-app/">Find Places Nearby in Google Maps using Google Places API–Android App</a></li><li class="current-post">Android Get Address with Street Name, City for Location with Geocoding</li><li><a class="post-menu" href="http://javapapers.com/android/android-geocoding-to-get-latitude-longitude-for-an-address/">Android Geocoding to Get Latitude Longitude for an Address</a></li></ul></li><li class="cat-item cat-item-50"><a href="http://javapapers.com/category/android/google-cloud-messaging/">Google Cloud Messaging</a></li><li class="cat-item cat-item-55"><a href="http://javapapers.com/category/android/android-wear/">Android Wear</a></li></ul></li><li class="cat-item cat-item-14"><a href="http://javapapers.com/category/design-patterns/">Design Patterns</a></li><li class="cat-item cat-item-86"><a href="http://javapapers.com/category/hibernate/">Hibernate</a></li><li class="cat-item cat-item-25"><a href="http://javapapers.com/category/spring/">Spring</a></li><li class="cat-item cat-item-60"><a href="http://javapapers.com/category/web-services/">Web Services</a></li><li class="cat-item cat-item-6"><a href="http://javapapers.com/category/servlet/">Servlet</a></li></ul></div>
+
+
+</div>
+<div id="sidebar">
+    <div id="aboutcntnt">
+        <div id="photo"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/joe.jpg" alt="Joe" width="90" height="120"></div>
+        <div id="aboutdesc">JavaPapers is a tutorials site and <a href="http://javapapers.com/about-me/" title="About Joe and javapapers.com">Joe</a> runs it passionately.</div>
+        <div id="contactMe">Say hi: <a href="mailto:joe@javapapers.com">joe@javapapers.com</a></div>
+    </div>
+<div class="ads">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2525233393528874";
+/* JP 300 x 250 */
+google_ad_slot = "3145278778";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="./Android Get Address with Street Name, City for Location with Geocoding_files/show_ads.js">
+</script><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</div>
+    <div class="hiadcomponent">
+        <div class="subscriber-title">FREE UPDATES (Join 10,000 Enthusiasts)</div>
+        <div><form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#39;http://feedburner.google.com/fb/a/mailverify?uri=javapapers/java-interview-questions&#39;, &#39;popupwindow&#39;, &#39;scrollbars=yes,width=550,height=520&#39;);return true"><p><input placeholder="Enter your email here" type="text" class="feedb-email" name="email"><input type="hidden" value="javapapers/java-interview-questions" name="uri"><input type="hidden" name="loc" value="en_US"><input type="submit" value="Subscribe" class="subscribe"></p></form></div>	
+    </div>
+
+    <div id="recommended">
+        <div class="heading">Recommended Tutorials</div>
+        <ul><li><a href="http://javapapers.com/core-java/java-history/" title="Java History">Java History</a></li><li><a href="http://javapapers.com/core-java/overloading-and-overriding/" title="Overloading vs Overriding in Java">Overloading vs Overriding in Java</a></li><li><a href="http://javapapers.com/core-java/eclipse-shortcuts/" title="Eclipse Shortcuts">Eclipse Shortcuts</a></li><li><a href="http://javapapers.com/core-java/java-serialization/" title="Java Serialization">Java Serialization</a></li><li><a href="http://javapapers.com/core-java/abstract-and-interface-core-java-2/difference-between-a-java-interface-and-a-java-abstract-class/" title="Difference Between Interface and Abstract Class">Difference Between Interface and Abstract Class</a></li><li><a href="http://javapapers.com/core-java/java-hashtable/" title="Java Hashtable">Java Hashtable</a></li><li><a href="http://javapapers.com/jsp/difference-between-forward-and-sendredirect/" title="Difference between forward and sendRedirect">Difference between forward and sendRedirect</a></li><li><a href="http://javapapers.com/core-java/differentiate-jvm-jre-jdk-jit/" title="Differentiate JVM JRE JDK JIT">Differentiate JVM JRE JDK JIT</a></li><li><a href="http://javapapers.com/core-java/java-jvm-memory-types/" title="Java (JVM) Memory Types">Java (JVM) Memory Types</a></li><li><a href="http://javapapers.com/core-java/why-multiple-inheritance-is-not-supported-in-java/" title="Why Multiple Inheritance is Not Supported in Java">Why Multiple Inheritance is Not Supported in Java</a></li></ul>
+    </div>
+</div>
+</div>
+<div id="footer">
+<div class="follow"><a href="https://plus.google.com/+JosephKulandai?rel=author" title="Google Plus"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/googleplus.png" alt="Google Plus"></a><a class="facebook" href="https://www.facebook.com/javapapers" title="Facebook" target="_blank"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/facebook.png" alt="Facebook"></a><a class="twitter" href="http://twitter.com/javapapers" title="Twitter" target="_blank"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/twitter.png" alt="Twitter"></a><a class="feed" href="http://javapapers.com/feed/" title="Feed"><img src="./Android Get Address with Street Name, City for Location with Geocoding_files/feed.png" alt="Feed"></a></div>
+<ul id="footer-menu">	<li class="cat-item cat-item-33"><a href="http://javapapers.com/category/java/" title="View all posts filed under Java">Java</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://javapapers.com/category/android/" title="View all posts filed under Android">Android</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://javapapers.com/category/design-patterns/" title="View all posts filed under Design Patterns">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://javapapers.com/category/spring/" title="View all posts filed under Spring">Spring</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://javapapers.com/category/web-services/" title="View all posts filed under Web Services">Web Services</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://javapapers.com/category/servlet/" title="View all posts filed under Servlet">Servlet</a>
+</li>
+</ul>
+<div id="footer-bottom"><p><a href="http://javapapers.com/site-map/" title="javapapers.com site map">Site Map</a></p>
+<p> © 2008-2014 <a href="http://javapapers.com/" title="JavaPapers Home">javapapers.com</a>. The design and content are copyrighted to Joe and may not be reproduced in any form.</p>
+</div>
+</div>
+<script type="text/javascript" src="./Android Get Address with Street Name, City for Location with Geocoding_files/form.js"></script>
+<script type="text/javascript" src="./Android Get Address with Street Name, City for Location with Geocoding_files/comment-reply.min.js"></script>
+<script src="./Android Get Address with Street Name, City for Location with Geocoding_files/prettify.js"></script>
+<script>prettyPrint();</script>
+
+<div id="wrchoverdiv"><div id="wrccontainer" style="background: #a5abb2 url(chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_norating.png)"><div id="wrcratingtext">This site has no rating</div><div class="wrclogo"></div></div></div></body></html>

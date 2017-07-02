@@ -1,0 +1,16 @@
+pdf image
+// load image
+    try {
+            // get input stream
+           InputStream ims = getAssets().open("myImage.png");
+           Bitmap bmp = BitmapFactory.decodeStream(ims);
+           ByteArrayOutputStream stream = new ByteArrayOutputStream();
+           bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+           Image image = Image.getInstance(stream.toByteArray());
+           document.add(image);
+        }
+   catch(IOException ex)
+        {
+            return;
+        }
+

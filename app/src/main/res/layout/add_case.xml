@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:baselineAligned="true"
+    android:background="#ffffffff"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="30"
+        android:id="@+id/textView2"
+        android:text="  Add Case"
+        android:gravity="start"
+        android:background="#ff3fb8e5"
+        android:textColor="#ffffffff"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:typeface="serif"
+        android:layout_weight="0.13" />
+
+    <LinearLayout
+        android:id="@+id/case_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/abc_ab_stacked_transparent_dark_holo"
+        android:layout_weight="0.48">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="CaseType"
+           android:layout_marginTop="20sp"
+           android:layout_marginLeft="15sp"
+           android:textColor="#ff3fb8e5"
+           android:textSize="20sp"
+
+           />
+        <AutoCompleteTextView
+            android:id="@+id/auto2"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-35dp"
+            android:layout_marginLeft="100dp"
+            android:hint="       Select Case Type"
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ctp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Add Type"
+            android:textColorHint="#ff3fb8e5"
+            android:textColor="#ff3fb8e5"
+            android:visibility="gone"
+            android:enabled="false"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Investigator"
+            android:layout_marginTop="40sp"
+            android:layout_marginLeft="13sp"
+            android:textColor="#ff3fb8e5"
+            android:textSize="20sp"
+
+            />
+        <MultiAutoCompleteTextView
+            android:id="@+id/auto1"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-25dp"
+            android:layout_marginLeft="115dp"
+            android:hint="   Select  by Name Or Id"
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+              />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Name"
+            android:textColorHint="#ff3fb8e5"
+            android:textColor="#ff3fb8e5"
+            android:minLines="1"
+            android:maxLines="10"
+            android:inputType="text" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText6"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Location"
+            android:textColorHint="#ff3fb8e5"
+            android:textColor="#ff3fb8e5"
+            android:minLines="1"
+            android:maxLines="10"
+            android:inputType="text" />
+<LinearLayout
+    android:layout_width="184dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Date Started"
+            android:id="@+id/textView6"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#ff3fb8e5" />
+</LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint=""
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-20sp"
+            android:textSize="15sp"
+            android:textColor="#ff3fb8e5"
+            android:textColorHint="#ff3fb8e5"
+            android:layout_marginLeft="10dp"
+            />
+
+        <ImageButton
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:id="@+id/imgbtn"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/cal"
+            android:layout_marginTop="-30dp"
+            android:layout_marginLeft="140dp"
+            android:clickable="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_gravity="center_horizontal"
+            android:hint=" Enter Any Description of The Case"
+            android:textColorHint="#ff3fb8e5"
+            android:editable="true"
+            android:textColor="#ff3fb8e5"
+            android:layout_marginTop="20sp"
+            android:enabled="true"
+            android:maxLines="200" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textMultiLine"
+            android:ems="10"
+            android:id="@+id/editstatus"
+            android:layout_gravity="center_horizontal"
+            android:hint=" Status"
+            android:textColorHint="#ff3fb8e5"
+            android:editable="true"
+            android:textColor="#ff3fb8e5"
+            android:layout_marginTop="20sp"
+            android:enabled="true"
+            android:maxLines="200" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint="Time Started"
+            android:id="@+id/textView1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:textSize="15sp"
+            android:textColor="#ff3fb8e5"
+            android:textColorHint="#ff3fb8e5"
+            android:layout_marginLeft="10dp"
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:drawable/editbox_background_normal"
+        android:textColor="#ff3fb8e5"
+        android:layout_marginTop="45dp"
+        android:enabled="true"
+        android:clickable="true" />
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:background="#ffffffff">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="30"
+        android:id="@+id/textView3"
+        android:text="  View Evidence"
+        android:gravity="start"
+        android:background="#ff3fb8e5"
+        android:textColor="#ffffffff"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:typeface="serif"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.08" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Case Id"
+            android:id="@+id/textView2"
+            android:layout_marginTop="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:textColor="#ff3fb8e5" />
+        <AutoCompleteTextView
+            android:id="@+id/auto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="-0dp"
+            android:hint="       Select Case "
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="34dp"
+            android:id="@+id/srch"
+            android:background="@android:drawable/ic_menu_search"
+            android:textColor="#ff3fb8e5"
+            android:textSize="20dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="E_Id"
+            android:id="@+id/t2"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:textColor="#ff3fb8e5" />
+        <AutoCompleteTextView
+            android:id="@+id/auto1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="20dp"
+            android:hint="       Select Evidence "
+            android:textColorHint="#ff4bbce7"
+            android:ems="10"
+            android:completionThreshold="1"
+            />
+</LinearLayout>
+            <TextView
+                android:text="E_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/id"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:textColor="#ff3fb8e5"></TextView>
+            <TextView
+                android:text="Name"
+                android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:id="@+id/name"
+                android:textColor="#ff3fb8e5"></TextView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:id="@+id/desc"
+        android:layout_marginLeft="20sp"
+        android:textColor="#ff3fb8e5"
+        android:textSize="18sp"
+        android:maxLines="300"
+        android:layout_marginTop="20sp"
+        android:minLines="1"
+        />
+
+</LinearLayout>
