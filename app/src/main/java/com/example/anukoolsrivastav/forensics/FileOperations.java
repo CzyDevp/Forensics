@@ -40,7 +40,9 @@ public class FileOperations {
     public Boolean write(String fname, String fcontent,String name,String Users,String type,String status,String Description,String startedon,String pass)
     {
         try {
-            String fpath=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+"/" + pass + ".pdf";
+           // String fpath=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+"/" + pass + ".pdf";
+
+            String fpath = Environment.DIRECTORY_DOCUMENTS+"/"+ pass+".pdf";
             File file = new File(fpath);
             // If file does not exists, then create it
             if (!file.exists())
@@ -105,11 +107,13 @@ public class FileOperations {
     {
         try {
             String fpath=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+"/" +name + ".pdf";
+           // String fpath=Environment.DIRECTORY_DOCUMENTS+"/" +name + ".pdf";
             File file = new File(fpath);
             // If file does not exists, then create it
             if (!file.exists())
             {
                 file.createNewFile();
+                //file.cre
             }
             // step 1
             Document document = new Document();

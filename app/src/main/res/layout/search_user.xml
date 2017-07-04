@@ -158,6 +158,13 @@
         android:minLines="1"
         android:layout_marginTop="02dp"
         android:background="@android:color/white" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/print"
+        android:layout_gravity="center"
+        android:text="Print-Doc"
+        android:visibility="gone"/>
 
 </LinearLayout>
 </ScrollView>

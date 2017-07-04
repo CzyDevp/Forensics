@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.opengl.Matrix;
 import android.os.Bundle;
+import android.support.v4.print.PrintHelper;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
@@ -34,15 +35,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.itextpdf.text.Image;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Anukool Srivastav on 26-09-2014.
- */
 public class searchuser extends Activity
 {
     String DB_NAME = DBAdapter.DATABASE_NAME;
@@ -52,7 +48,7 @@ public class searchuser extends Activity
     DBAdapter db=new DBAdapter(this);
     ArrayList<String> items1=new ArrayList<String>();
    // Spinner search;
-    Button btn,pdf;
+    Button btn,pdf,print;
     Bitmap bm12= null;
     AutoCompleteTextView actv;
     TextView tv1,tv2,tv3,tv4,tv12,getpd;
@@ -66,6 +62,7 @@ public class searchuser extends Activity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.search_user);
         final Drawable err1 = (Drawable)getResources().getDrawable(R.drawable.err);
+        print = (Button)findViewById(R.id.print);
         err1.setBounds(0, 0, err1.getIntrinsicWidth()/2, err1.getIntrinsicHeight()/2);
         btn=(Button)findViewById(R.id.btn);
         Bundle getName=getIntent().getExtras();
@@ -88,6 +85,18 @@ public class searchuser extends Activity
         pdf=(Button)findViewById(R.id.pdf);
         pdf.setEnabled(false);
         pdf.setVisibility(View.GONE);
+        print.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v) {
+                PrintHelper printHelper;
+                printHelper = new PrintHelper(searchuser.this);
+                printHelper.setScaleMode(PrintHelper.SCALE_MODE_FILL);
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.galry);
+                printHelper.printBitmap("Gallery",bitmap);
+            }
+        });
         pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,13 +106,13 @@ public class searchuser extends Activity
                 String mobile=tv2.getText().toString();
                 String email=tv3.getText().toString();
                 String id=tv4.getText().toString();
-
                // String Description=tv6.getText().toString();
                // String startedon=tv7.getText().toString();
                 FileOperations fop = new FileOperations();
                 fop.writeuser(name,mobile,email,id,bm12);
                 if (fop.writeuser(name,mobile,email,id,bm12))
                 {
+                    print.setVisibility(View.VISIBLE);
                      LayoutInflater inflater = getLayoutInflater();
                     View layout = inflater.inflate(R.layout.toast_xml,
                             (ViewGroup) findViewById(R.id.custom_toast_layout_id));
