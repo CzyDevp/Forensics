@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
-        android:background="@drawable/abc_ab_stacked_transparent_dark_holo"
         android:layout_weight="0.48">
        <TextView
            android:layout_width="wrap_content"
@@ -43,7 +42,6 @@
            android:layout_marginLeft="15sp"
            android:textColor="#ff3fb8e5"
            android:textSize="20sp"
-
            />
         <AutoCompleteTextView
             android:id="@+id/auto2"
@@ -56,7 +54,6 @@
             android:ems="10"
             android:completionThreshold="1"
             />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +76,6 @@
             android:layout_marginLeft="13sp"
             android:textColor="#ff3fb8e5"
             android:textSize="20sp"
-
             />
         <MultiAutoCompleteTextView
             android:id="@+id/auto1"
@@ -125,7 +121,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:weightSum="1">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -137,7 +132,6 @@
             android:layout_marginRight="10dp"
             android:textColor="#ff3fb8e5" />
 </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -151,7 +145,6 @@
             android:textColorHint="#ff3fb8e5"
             android:layout_marginLeft="10dp"
             />
-
         <ImageButton
             android:layout_width="39dp"
             android:layout_height="39dp"
@@ -161,7 +154,6 @@
             android:layout_marginTop="-30dp"
             android:layout_marginLeft="140dp"
             android:clickable="true" />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,7 +168,6 @@
             android:layout_marginTop="20sp"
             android:enabled="true"
             android:maxLines="200" />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -205,8 +196,6 @@
             android:layout_marginLeft="10dp"
             />
     </LinearLayout>
-
-
     <Button
         android:layout_width="125dp"
         android:layout_height="wrap_content"
@@ -218,6 +207,5 @@
         android:layout_marginTop="45dp"
         android:enabled="true"
         android:clickable="true" />
-
 </LinearLayout>
 </ScrollView>

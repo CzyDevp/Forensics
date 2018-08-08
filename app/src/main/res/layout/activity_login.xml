@@ -11,9 +11,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#ffffffff"
-    tools:context="com.example.anukoolsrivastav.forensics.Login"
+    tools:context="com.example.czydevp.forensics.Login"
     android:weightSum="1">
-
     <!-- Login progress -->
     <ImageView
         android:layout_width="wrap_content"
@@ -25,7 +24,6 @@
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
             <LinearLayout
                 android:id="@+id/email_login_form"
                 android:layout_width="match_parent"
@@ -33,9 +31,6 @@
                 android:orientation="vertical"
                 android:weightSum="1"
                 android:layout_marginTop="80dp">
-
-
-
                 <EditText
                     android:id="@+id/user"
                     android:layout_width="match_parent"
@@ -46,30 +41,23 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:layout_marginTop="10dp"
-                      android:layout_marginStart="10dp"
-
-                    android:background="@drawable/abc_ab_transparent_dark_holo"
+                    android:layout_marginStart="10dp"
                     android:typeface="serif"
                     android:textColor="#ff2f8fff"
-
                     android:textSize="20dp"
                     android:textAlignment="center"
-
                     android:alpha="100"
                     android:editable="true"
                     android:enabled="true"
-                   android:focusable="true"
+                    android:focusable="true"
                     android:focusableInTouchMode="true"
-
                     />
                 <requestFocus/>
-
                 <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
@@ -77,25 +65,17 @@
                     android:textColorHint="#ff4bbce7"
                     android:layout_marginTop="30dp"
                     android:singleLine="true"
-                    android:background="@drawable/abc_ab_transparent_dark_holo"
                     android:typeface="serif"
                     android:textColor="#FF2F8FFF"
                     android:textSize="20dp"
                     android:layout_marginStart="10dp"
                     android:textAlignment="center"
-
                     android:alpha="100"
                     android:layout_weight="0.17"
                     android:focusable="true"
-                    android:focusableInTouchMode="true"
-
-                    android:editable="true" />
-
-
-
+                    android:focusableInTouchMode="true" />
             </LinearLayout>
     </ScrollView>
-
     <Button
         android:id="@+id/log_in"
         style="?android:textAppearanceSmall"
@@ -113,7 +93,6 @@
         android:focusable="false"
         android:layout_marginLeft="-15dp"
         android:focusableInTouchMode="false"/>
-
 </LinearLayout>
 
 

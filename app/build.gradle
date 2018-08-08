@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 20
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.example.anukoolsrivastav.forensics'
+        applicationId 'com.example.czydevp.forensics'
         minSdkVersion 19
-        targetSdkVersion 20
+        targetSdkVersion 26
         versionCode 1
         versionName '1.0'
-        multiDexEnabled true;
     }
     buildTypes {
         release {
@@ -18,20 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-    }
-    dependencies {
-        compile 'com.android.support:multidex:1.0.0'
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:20.0.0'
-    compile 'com.google.android.gms:play-services:4.2.42'
-    compile files('libs/itextpdf-5.5.1.jar')
-    compile files('libs/bcprov-ext-jdk16-1.46.jar')
 }
 dependencies {
-    compile 'com.android.support:multidex:1.0.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.google.android.gms:play-services:4.2.42'
+    implementation files('libs/itextpdf-5.5.1.jar')
+    implementation files('libs/bcprov-ext-jdk16-1.46.jar')
 }
